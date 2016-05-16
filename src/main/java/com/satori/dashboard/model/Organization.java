@@ -28,6 +28,8 @@ public class Organization {
 
 	private Set<Asset> assets;
 
+	private Set<Service> services;
+
 	public Organization() {
 		this(null);
 	}
