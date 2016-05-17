@@ -14,7 +14,7 @@ public class TicketUrgency {
 
 	private static Logger logger = LoggerFactory.getLogger(TicketUrgency.class);
 	
-	private Integer id;
+	private Long id;
 
 	private String urgencyCode;
 
@@ -30,7 +30,7 @@ public class TicketUrgency {
 		this.urgencyCode = urgencyCode;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -46,7 +46,7 @@ public class TicketUrgency {
 		return tickets;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

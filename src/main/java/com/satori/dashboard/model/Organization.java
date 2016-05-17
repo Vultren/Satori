@@ -28,6 +28,12 @@ public class Organization {
 
 	private Set<Asset> assets;
 
+	private Set<Customer> customers;
+
+	private Set<Group> groups;
+
+	private Set<Partner> partners;
+
 	private Set<Service> services;
 
 	public Organization() {

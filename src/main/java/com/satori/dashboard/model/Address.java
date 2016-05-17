@@ -25,6 +25,8 @@ public class Address {
 
     private Organization organization;
 
+	private Set<Person> people;
+
     private String streetAddress1;
     
     private String streetAddress2;
@@ -67,6 +69,10 @@ public class Address {
 
 	public Organization getOrganization() {
 		return organization;
+	}
+
+	public Set<Person> getPeople() {
+		return people;
 	}
 
 	public String getStreetAddress1() {
@@ -139,6 +145,10 @@ public class Address {
 
 	public void setOrganization(Organization organization) {
 		this.organization = organization;
+	}
+
+	public void setPeople(Set<Person> people) {
+		this.people = people;
 	}
 
 	public void setStreetAddress1(String streetAddress1) {
