@@ -1,16 +1,16 @@
 package com.satori.dashboard.model.validator;
 
+import java.math.BigDecimal;
+
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.satori.dashboard.model.UsState;
-
-public class UsStateValidator implements Validator{
+public class AddressValidator implements Validator{
 
 	@Override
 	public boolean supports(Class<?> clazz) {
 		// TODO Auto-generated method stub
-		return UsState.class.equals(clazz);
+		return false;
 	}
 
 	@Override
@@ -18,5 +18,6 @@ public class UsStateValidator implements Validator{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	
 }
