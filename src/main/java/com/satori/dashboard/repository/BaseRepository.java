@@ -1,3 +1,10 @@
+/**
+ * BaseRepository.java 
+ *
+ * Satori
+ * @author Eric Walden
+ * Created May 27, 2016 12:20:37 PM
+ */
 package com.satori.dashboard.repository;
 
 import java.io.Serializable;
@@ -10,22 +17,74 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 
+/**
+ * The Interface BaseRepository.
+ *
+ * @param <T>
+ *            the generic type
+ * @param <ID>
+ *            the generic type
+ */
 @NoRepositoryBean
 public interface BaseRepository<T, ID extends Serializable> extends Repository<T, ID> {
 	
-	 void delete(T deleted);
+	 /**
+	 * Delete.
+	 *
+	 * @param deleted
+	 *            the deleted
+	 */
+ 	void delete(T deleted);
 	 
-	 List<T> findAll();
+	 /**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
+ 	List<T> findAll();
 	     
-	 Optional<T> findOne(ID id);
+	 /**
+	 * Find one.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the optional
+	 */
+ 	Optional<T> findOne(ID id);
 	 
-	 T save(T persisted);
+	 /**
+	 * Save.
+	 *
+	 * @param persisted
+	 *            the persisted
+	 * @return the t
+	 */
+ 	T save(T persisted);
 	 
-	 Long count();
+	 /**
+	 * Count.
+	 *
+	 * @return the long
+	 */
+ 	Long count();
 
-	 List<T> findAll(Sort sort);
+	 /**
+	 * Find all.
+	 *
+	 * @param sort
+	 *            the sort
+	 * @return the list
+	 */
+ 	List<T> findAll(Sort sort);
 	 
-	 Page<T> findAll(Pageable pageable);
+	 /**
+	 * Find all.
+	 *
+	 * @param pageable
+	 *            the pageable
+	 * @return the page
+	 */
+ 	Page<T> findAll(Pageable pageable);
 	 
 	 
 }
