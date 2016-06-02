@@ -5,20 +5,13 @@ import java.util.Arrays;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Configurable;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@Configurable
 @Entity
-@Table(name = "service")
-@JsonIgnoreProperties({ "entityManager", "compositeServices", "subServices", "serviceAssetXrefs" })
 
 public class Service {
 
