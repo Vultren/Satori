@@ -162,7 +162,7 @@ public class Person {
 		group.setGroupName("1901 Group");
 		group.setGroupDescription("1901 Group");
 		group.setOrganization(organization);
-		group.setIsPrimary("Y");
+		group.setPrimary(true);
 		// Person
 		Person person = new Person();
 		person.setId(1L);

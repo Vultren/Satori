@@ -10,7 +10,7 @@ public class AssetValidator implements Validator {
 	private final Validator addressValidator;
 	private final Validator organizationValidator;
 	
-	public public AssetValidator(Validator addressValidator, Validator organizationValidator) {
+	public AssetValidator(Validator addressValidator, Validator organizationValidator) {
 		
 		this.addressValidator = addressValidator;
 		this.organizationValidator = organizationValidator;
