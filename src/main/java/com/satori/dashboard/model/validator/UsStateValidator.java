@@ -19,4 +19,13 @@ public class UsStateValidator implements Validator{
 		
 	}
 
+/*	public static boolean isValidUsState(String stateCode) {
+		if (stateCode == null || stateCode.isEmpty()){
+			logger.warn("State code not recieved.");
+		} else if (findUsStateByStateCode(stateCode) == null){
+			logger.warn("[{}] is not a valid code for a state in the US.", stateCode);
+			return false;
+		}
+		return true;
+	}*/
 }

@@ -1,7 +1,7 @@
 package com.satori.dashboard.model;
 
 import java.time.Instant;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -14,15 +14,47 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.satori.dashboard.SatoriConstants;
 
 @Configurable
 @Entity
 @Table(name = "service")
-@JsonIgnoreProperties( {"entityManager", "compositeServices", "subServices", "serviceAssetXrefs"} )
+@JsonIgnoreProperties({ "entityManager", "compositeServices", "subServices", "serviceAssetXrefs" })
 
 public class Service {
 
+	public enum Type {
+		NETWORK_SERVICE("Network", ""),
+		EMAIL_SERVICE("Email", ""),
+		STORAGE_SERVICE("Storage", ""),
+		SECURITY_SERVICE("Security", ""),
+		VOICE_SERVICE("Voice", ""),
+		UNKNOWN_SERVICE("Unknown", ""),
+		CUSTOM_SERVICE("Custom", ""),
+		COMPOSITE_SERVICE("Composite", "");
+
+		private String displayName;
+		private String description;
+
+		private Type(String displayName, String description) {
+			this.displayName = displayName;
+			this.description = description;
+		}
+
+		public static Type toEnum(String value) {
+			return Arrays.asList(Type.values()).stream().filter(type -> type.displayName().equalsIgnoreCase(value))
+					.findFirst().orElse(null);
+		}
+
+		public String displayName() {
+			return displayName;
+		}
+
+		public String description() {
+			return description;
+		}
+
+	}
+	
 	private static Logger logger = LoggerFactory.getLogger(Service.class);
 
 	private Long id;
@@ -37,7 +69,7 @@ public class Service {
 
 	private Instant updatedDate;
 
-	private ServiceType serviceType;
+	private Type serviceType;
 
 	private Organization organization;
 
@@ -52,22 +84,23 @@ public class Service {
 	public Service() {
 		this(null, null);
 	}
-	
+
 	public Service(Organization organization) {
-		this(organization, new ServiceType(SatoriConstants.ServiceTypeConstants.UNKNOWN_SERVICE_TYPE));
+		this(organization, Type.UNKNOWN_SERVICE);
+
 	}
-	
-	public Service(Organization organization, ServiceType serviceType) {
-		 this.serviceName  = String.format("%s %s", organization.getOrganizationName(), serviceType.getServiceTypeName());
-		 this.displayServiceName = serviceType.getServiceTypeName();
-		 this.serviceDescription = serviceName;
-		 this.createdDate = Instant.now();
-		 this.updatedDate = Instant.now();
-		 this.serviceType = serviceType;
-		 this.organization = organization;
-		 this.group = new Group();
+
+	public Service(Organization organization, Type serviceType) {
+		this.serviceName = String.format("%s %s", organization.getOrganizationName(), serviceType.displayName());
+		this.displayServiceName = serviceType.displayName();
+		this.serviceDescription = serviceType.description();
+		this.createdDate = Instant.now();
+		this.updatedDate = Instant.now();
+		this.serviceType = serviceType;
+		this.organization = organization;
+		this.group = new Group();
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -92,7 +125,7 @@ public class Service {
 		return updatedDate;
 	}
 
-	public ServiceType getServiceType() {
+	public Type getServiceType() {
 		return serviceType;
 	}
 
@@ -140,7 +173,7 @@ public class Service {
 		this.updatedDate = updatedDate;
 	}
 
-	public void setServiceType(ServiceType serviceType) {
+	public void setServiceType(Type serviceType) {
 		this.serviceType = serviceType;
 	}
 
@@ -167,4 +200,5 @@ public class Service {
 	public String toString() {
 		return new ReflectionToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).setExcludeFieldNames().toString();
 	}
+
 }

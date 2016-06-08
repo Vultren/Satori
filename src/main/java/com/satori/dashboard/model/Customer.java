@@ -1,14 +1,11 @@
 package com.satori.dashboard.model;
 import java.time.Instant;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
-import com.satori.dashboard.model.reporting.Report;
 
 @Entity
 public class Customer {
@@ -25,7 +22,7 @@ public class Customer {
 
     private Set<CustomerPartnerXref> customerPartnerXrefs;
 	
-    private Set<Report> reports;
+   // private Set<Report> reports;
 
     public Customer() {
     	
@@ -64,9 +61,9 @@ public class Customer {
 		return customerPartnerXrefs;
 	}
 
-	public Set<Report> getReports() {
+/*	public Set<Report> getReports() {
 		return reports;
-	}
+	}*/
 
 	public void setId(Long id) {
 		this.id = id;
@@ -92,9 +89,9 @@ public class Customer {
 		this.customerPartnerXrefs = customerPartnerXrefs;
 	}
 
-	public void setReports(Set<Report> reports) {
+	/*public void setReports(Set<Report> reports) {
 		this.reports = reports;
-	}
+	}*/
 	
 	public String toString() {
         return new ReflectionToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).setExcludeFieldNames().toString();
