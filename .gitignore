@@ -15,3 +15,4 @@ doc/
 /.gradle/
 /build/
 reports/
+.settings/
