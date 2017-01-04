@@ -89,7 +89,7 @@ public class Customer {
 		this.customerPartnerXrefs = customerPartnerXrefs;
 	}
 
-	/*public void setReports(Set<Report> reports) {
+/*	public void setReports(Set<Report> reports) {
 		this.reports = reports;
 	}*/
 	

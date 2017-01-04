@@ -1,5 +1,11 @@
 package com.satori.dashboard.model.validator;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
+
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -32,5 +38,13 @@ public abstract class BaseValidator<T> implements Validator {
 		if(!validator.supports(clazz))
 			throw new IllegalArgumentException(unsupportedValidator);
 	}
-
+	
+	protected boolean timeWithinEpochWindow(Instant instant) {
+		Long endOfEpoch = LocalDateTime.of(2038, Month.JANUARY, 19, 3, 14, 37)
+				.toEpochSecond(ZoneOffset.UTC);
+		Long secondsFromEpoch = Instant.ofEpochSecond(0L).until(instant,
+                ChronoUnit.SECONDS);
+		
+		return secondsFromEpoch > 0 && secondsFromEpoch < endOfEpoch;
+	}
 }
