@@ -20,4 +20,8 @@ public interface SatoriConstants {
 		String CREATE_DATE = "createdDate";
 		String UPDATE_DATE = "updatedDate";
 	}
+	
+	public interface Patterns {
+		String PHONE = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$";
+	}
 }
